@@ -392,6 +392,8 @@
 .ls_btm .game {
     display: none;
 }
+
+/*机票部分*/
 .all_jp_tab{
     margin-left: 3px;
 }
@@ -495,6 +497,10 @@
     float: left;
     margin-left: 10px;
     margin-top: 10px;;
+}
+.jipiao .btn_submit{
+    float: left;
+    margin-top: -5px;;
 }
 /*酒店部分快捷查询*/
 .ht_tab{
