@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>郭莹的小案例导航</title>
+    <style type="text/css">
+        *{margin:0;padding:0;}
+        ul{list-style: none;}
+        img{display: block; border:0; }
+        a{display: inline-block}
+        .wrapper{width: 752px;  border:1px solid #ccc;
+            padding: 10px 0 0 10px;
+            font-family: arial;
+            overflow: hidden;
+            margin:100px auto;
+
+        }
+        .wrapper li{
+            float: left;
+            margin:0 10px 10px 0;
+            width: 178px;
+            height: 125px;
+            overflow: hidden;
+            position: relative;
+            text-align: center;
+            /*border: 1px solid darkgrey;*/
+            /*box-sizing: border-box;*/
+            box-shadow: 0 0 10px rgba(0,0,0,.3);
+        }
+        .wrapper li div,.wrapper li p{
+            width:178px;
+            height: 25px;
+            position: absolute;
+            font-size:14px;
+            text-align: center;
+            line-height: 25px;
+            color:white;
+            left:0;
+            bottom:-25px;
+        }
+        .wrapper li div{
+            background-color:#000;
+        }
+        .wrapper li p{
+            text-align: left;
+            padding-left: 25px;
+        }
+
+    </style>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("<div></div>").insertBefore($("p"));
+            $("li div").css("background-color","black").fadeTo(100,0.5);
+            $("li p").each(function (index,ele) {
+                $(this).css("background","url(images/"+(index+1)+".jpg) no-repeat 5px 5px");
+            });
+            $("li").hover(function () {
+                $(this).children("p,div").stop().animate({"bottom": "0px"});
+            }, function () {
+                $(this).children("p,div").stop().animate({"bottom": "-25px"});
+            });
+        })
+    </script>
+</head>
+<body>
+<div class="wrapper">
+    <ul>
+        <li><a href="https://kileyguo.github.io/jd-imitate/#"><img src="images/1.gif" alt=""/></a><p>京东商城仿写</p></li>
+        <li><a href="02/index.html"><img src="images/2.gif" alt=""/></a><p>tab切换</p></li>
+        <li><a href="03/demo.html"><img src="images/3.gif" alt=""/></a><p>仿网易轮播图</p></li>
+        <li><a href="04/demo.html"><img src="images/4.gif" alt=""/></a><p>旋转木马轮播图</p></li>
+        <li><a href="05/demo.html"><img src="images/5.gif" alt=""/></a><p>商品放大镜</p></li>
+        <li><a href="06/demo.html"><img src="images/6.gif" alt=""/></a><p>两侧跟随的广告</p></li>
+        <li><a href="07/demo.html"><img src="images/7.gif" alt=""/></a><p>返回顶端</p></li>
+        <li><a href="08/demo.html"><img src="images/8.gif" alt=""></a><p>手风琴效果</p></li>
+        <li><a href="09/drrr.html"><img src="images/9.gif" alt=""></a><p>鼠标悬停长图滚动浏览</p></li>
+        <li><a href="10.html"><img src="images/10.gif" alt=""></a><p>省市选择</p></li>
+        <li><a href="11.html"><img src="images/11.gif" alt=""></a><p>五星打分</p></li>
+        <li><a href="12/clock.html"><img src="images/12.gif" alt=""></a><p>时钟</p></li>
+
+    </ul>
+</div>
+</body>
+</html>

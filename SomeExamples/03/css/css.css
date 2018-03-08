@@ -1,0 +1,75 @@
+img {
+    vertical-align: top;
+}
+.w-slider {
+    margin: 100px auto;
+    /*background-color: pink;*/
+    width: 310px;
+    height: 265px;
+    position: relative;
+    overflow: hidden;
+}
+
+.slider {
+    width: 310px;
+    height: 220px;
+    /*background-color: greenyellow;*/
+    /*position: relative;*/
+
+}
+
+.slider-ctrl {
+    /*background-color: #336699;*/
+    /*width: 310px;*/
+    /*height: 45px;*/
+    text-align: center;
+
+
+}
+
+.slider-main {
+    width: 620px;
+    height: 220px;
+    background-color: aqua;
+}
+
+.slider-main-img {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.slider-ctrl-con {
+    width: 24px;
+    height: 15px;
+    background: url("../images/icon.png") no-repeat -24px -785px;
+    display: inline-block;
+    margin: 10px 3px;
+    cursor: pointer;
+    text-indent: -20em;
+    overflow: hidden;
+}
+
+.current {
+    background: url("../images/icon.png") no-repeat -24px -765px;
+}
+
+.slider-ctrl-prev,
+.silder-ctrl-next {
+    width: 19px;
+    height: 34px;
+    position: absolute;
+    top:50%;
+    margin: -35px 5px;
+    cursor: pointer;
+    opacity: 0.7;
+}
+.silder-ctrl-next {
+    background: url("../images/icon.png") no-repeat -10px -45px;
+    right: 0;
+}
+.slider-ctrl-prev {
+    background: url("../images/icon.png") no-repeat top left;
+    left: 0;
+
+}

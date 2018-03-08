@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>五星打分</title>
+    <style>
+        li {
+            color: red;
+            float: left;
+            list-style: none;
+            font-size: 30px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+    <script>
+        var sel = "★", unsel = "☆";
+        $(function () {
+            $("ul").on("mouseenter", "li",function () {
+                $(this).text(sel).prevAll().text(sel).end().nextAll().text(unsel);
+            }).on("click","li", function () {
+                $(this).addClass("selected").siblings().removeClass("selected");
+            }).on("mouseleave",function(){
+                var flag = $(this).children("li").hasClass("selected");
+                console.log(flag);
+                if(flag == false){
+                    $(this).children("li").text(unsel);
+                }
+                else{
+                    $(this).find(".selected").text(sel).prevAll().text(sel).end().nextAll().text(unsel);
+                }
+            })
+        })
+    </script>
+</head>
+<body>
+<ul>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+    <li>☆</li>
+</ul>
+</body>
+</html>

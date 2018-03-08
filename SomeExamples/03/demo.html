@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>网易轮播图</title>
+    <link rel="stylesheet" href="css/css.css">
+    <script src="js/animate.js" type="text/javascript"></script>
+</head>
+<body>
+<div class="w-slider" id="js_slider">
+    <div class="slider">
+        <div class="slider-main" id="slider_main_block">
+            <div class="slider-main-img"><a href="#"><img src="images/1.jpg" alt=""></a></div>
+            <div class="slider-main-img"><a href="#"><img src="images/2.jpg" alt=""></a></div>
+            <div class="slider-main-img"><a href="#"><img src="images/3.jpg" alt=""></a></div>
+            <div class="slider-main-img"><a href="#"><img src="images/4.jpg" alt=""></a></div>
+            <div class="slider-main-img"><a href="#"><img src="images/5.jpg" alt=""></a></div>
+            <div class="slider-main-img"><a href="#"><img src="images/6.jpg" alt=""></a></div>
+        </div>
+    </div>
+    <div class="slider-ctrl" id="slider_ctrl">
+        <span class="slider-ctrl-prev"></span>
+        <span class="silder-ctrl-next"></span>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    function $(id) {return document.getElementById(id);}
+    var js_slider = $("js_slider");
+    var slider_main_block = $("slider_main_block");  // 滚动图片的父亲
+    var imgs = slider_main_block.children;  // 获得所有的图片组 需要滚动的部分
+    var slider_ctrl = $("slider_ctrl");  // 获得 控制span 的 父盒子
+
+    for(var i = imgs.length; i> 0; i--){
+        var span = document.createElement("span");
+        slider_ctrl.insertBefore(span,slider_ctrl.children[1]);
+        span.innerHTML = i;
+        span.className = "slider-ctrl-con";
+    }
+
+    var spans = slider_ctrl.children;
+    spans[1].setAttribute("class","slider-ctrl-con current");
+
+    var scrollWidth = js_slider.clientWidth;
+    for (var i=1; i< imgs.length; i++){
+        imgs[i].style.left = scrollWidth +"px";
+    }
+
+    var iNow = 0;
+    for (var k in spans){
+        spans[k].onclick = function () {
+            if (this.className == "slider-ctrl-prev"){
+//                alert("zuo");
+                animate(imgs[iNow],{left: scrollWidth});
+                iNow--;
+                iNow < 0 ? iNow = imgs.length-1 : iNow;
+                imgs[iNow].style.left = -scrollWidth + "px";
+                animate(imgs[iNow],{left: 0});
+                setSquare ();
+            }
+            else if (this.className == "silder-ctrl-next"){
+//                alert("you");
+//                animate(imgs[iNow],{left: -scrollWidth});
+//                iNow++;
+//                iNow > imgs.length-1 ? iNow = 0 : iNow;
+//                imgs[iNow].style.left = scrollWidth + "px";
+//                animate(imgs[iNow],{left: 0});
+                autopaly();
+            }
+            else {
+//                alert("xia");
+                var that = this.innerHTML-1;
+                if (that > iNow){
+                    animate(imgs[iNow],{left: -scrollWidth});
+                    imgs[that].style.left = scrollWidth + "px";
+                }
+                else if(that < iNow){
+                    animate(imgs[iNow],{left: scrollWidth});
+                    imgs[that].style.left = -scrollWidth + "px";
+                }
+                iNow = that;
+                animate(imgs[iNow],{left: 0});
+                setSquare ();
+            }
+        }
+    }
+
+    function setSquare (){
+        for (i=1; i<spans.length - 1; i++){
+            spans[i].className = "slider-ctrl-con";
+        }
+        spans[iNow+1].className = "slider-ctrl-con current";
+    }
+
+    var timer = null;
+    timer = setInterval(autopaly,1500);
+    function autopaly(){
+        animate(imgs[iNow],{left: -scrollWidth});
+        iNow++;
+        iNow > imgs.length-1 ? iNow = 0 : iNow;
+        imgs[iNow].style.left = scrollWidth + "px";
+        animate(imgs[iNow],{left: 0});
+        setSquare ();
+    }
+    js_slider.onmouseover = function () {
+        clearInterval(timer);
+    }
+    js_slider.onmouseout = function () {
+        clearInterval(timer);
+        timer = setInterval(autopaly,1500);
+    }
+
+
+</script>
