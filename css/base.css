@@ -361,6 +361,7 @@ input:-ms-input-placeholder { /* Internet Explorer 10+*/
     float: left;
     font: 16px/36px "microsoft yahei";
     color: #fff;
+    cursor: pointer;
 }
 .searchbox i {
     font-size: 20px;
