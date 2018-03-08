@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标悬停不同位置控制长图滚动浏览</title>
+    <style>
+        .auto {
+            width: 850px;
+            height: 450px;
+            margin: 100px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        span {
+            position: absolute;
+            width: 850px;
+            height: 225px;
+        }
+        .toparea {
+            top:0;
+        }
+        .bottomarea {
+            bottom: 0;
+        }
+        #pic {
+            position: absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div class="auto">
+    <img src="images/drrr.jpg" alt="" id="pic">
+    <span class="toparea" id="topArea"></span>
+    <span class="bottomarea" id="bottomArea"></span>
+</div>
+</body>
+<script>
+    var num = 0;
+    var timer = null;
+    function $ (id) {return document.getElementById(id);}
+    $("topArea").onmouseover = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            num--;
+            if (num < -8105){
+                clearInterval(timer);
+            }
+            else {
+                $("pic").style.top = num+"px";
+            }
+        },5)
+    }
+
+    $("bottomArea").onmouseover = function(){
+        clearInterval(timer);
+        timer = setInterval(function(){
+            num++;
+            if (num >0){
+                clearInterval(timer);
+            }
+            else {
+                $("pic").style.top = num+"px";
+            }
+        },5)
+    }
+
+    $("topArea").parentNode.onmouseout = function (){
+        clearInterval(timer);
+    }
+</script>
+</html>
